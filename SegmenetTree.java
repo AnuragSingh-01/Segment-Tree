@@ -37,7 +37,7 @@ public class SegmenetTree
       buildSG(arr,sgTree,0,N-1,1);
       
       //printing
-      for(int i=1;i<2*N;i++)
+      for(int i=1;i<tree_nodes;i++)
       {
          System.out.print(sgTree[i]+" ");
       }
