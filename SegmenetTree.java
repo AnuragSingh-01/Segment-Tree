@@ -59,8 +59,8 @@ public class SegmenetTree
       int height = (int)(Math.log(N)/Math.log(2)) + 1;
       int tree_nodes = (int) Math.pow(2, height + 1);
       
-      int sgTree[]=new int [tree_nodes];
-      
+      int sgTree[]=new int [tree_nodes];// We can also take  the size of Segment tree as 4*N if we dont wanat to do above two step, it willalso workfine.
+                                        //int sgTree[]=new int[4*N] will alo be fine...
       buildSG(arr,sgTree,0,N-1,1);
       
       //printing after building segment tree...
