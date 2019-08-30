@@ -124,14 +124,14 @@ public class SegTree {
             int val2=in.nextInt();
             if(ch=='Q')
             {
-                Node temp=getMaxSumOfPair(tree,0,N-1,1,val1-1,val2-1);
+                Node temp=getMaxSumOfPair(tree,0,N-1,1,val1,val2);
                 if(temp.smax!=Long.MIN_VALUE)
                     System.out.println(temp.max+temp.smax);
                 else
                     System.out.println(temp.max);
             }
             else
-                updateTree(arr,tree,0,N-1,1,val1-1,val2);
+                updateTree(arr,tree,0,N-1,1,val1,val2);
         }
 	}
 
