@@ -26,8 +26,8 @@ public class SegTree {
 
 	 static class Node
     {
-        long max;
-        long smax;
+        int max;
+        int smax;
     }
     
     
@@ -37,7 +37,7 @@ public class SegTree {
         if(start==end)
         {
             tree[treeNode].max=arr[start];
-            tree[treeNode].smax=Long.MIN_VALUE;
+            tree[treeNode].smax=Integer.MIN_VALUE;
             return;
         }
         int mid=(start+end)/2;
@@ -57,7 +57,7 @@ public class SegTree {
         {
             arr[idx]=value;
             tree[treeNode].max=value;
-            tree[treeNode].smax=Long.MIN_VALUE;
+            tree[treeNode].smax=Integer.MIN_VALUE;
             return;
         }
         
@@ -77,8 +77,8 @@ public class SegTree {
         if(end<left || right<start ||)
         {
             Node n=new Node();
-            n.max=Long.MIN_VALUE;
-            n.smax=Long.MIN_VALUE;
+            n.max=Integer.MIN_VALUE;
+            n.smax=Integer.MIN_VALUE;
             return n; 
         }
         
