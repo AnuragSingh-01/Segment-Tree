@@ -1,12 +1,12 @@
 /*
 
-It is used for finding maximum sum of any subarray in a given range in the array.
-for example:
- f we have an array like:
-1, 4, -1, 3, 42, 7, 5, 9, -2
+     It is used for finding maximum sum of any subarray in a given range in the array.
+     for example:
+     if we have an array like:
+                  1, 4, -1, 3, 42, 7, 5, 9, -2
 
-then if the query is (0,4)  the maximum sum of any sub array inside it will be 12
-                             same for  0 3-----> 7
+         then if the query is (0,4)  the maximum sum of any sub array inside it will be 12
+                                   same for  0, 3-----> 7
                                              2, 4----->7
                                              4, 8------>27
 
