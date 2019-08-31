@@ -19,19 +19,18 @@ code by AnuragSingh-01
 
 import java.util.Scanner;
 
-
 public class MaxSubarraySumInGivenRange {
 
 	
     static class Node
     {
-        long maxsum;
-        long sum;
-        long BPS;  //best left prefix sum..
-        long BSS; //best right suffix sum...
+        int maxsum;
+        int sum;
+        int BPS;  //best left prefix sum..
+        int BSS; //best right suffix sum...
     }
     
-    public static void buildTree(long arr[],Node tree[],int start,int end,int treeNode)
+    public static void buildTree(int arr[],Node tree[],int start,int end,int treeNode)
     {
         if(start == end)
         {
@@ -58,8 +57,9 @@ public class MaxSubarraySumInGivenRange {
     }
                
                                          
-   public static void updateTree(long arr[],Node tree[],int start,int end,int treeNode,int idx,int value)
+   public static void updateTree(int arr[],Node tree[],int start,int end,int treeNode,int idx,int value)
    {
+       
        if(start==end)
        {
             arr[idx]=value;
@@ -91,11 +91,12 @@ public class MaxSubarraySumInGivenRange {
        if(end<left || right<start)
        {
             Node temp=new Node();
-                 temp.maxsum=Long.MIN_VALUE;
-                 temp.sum=Long.MIN_VALUE;
-                 temp.BPS=Long.MIN_VALUE;
-                 temp.BSS=Long.MIN_VALUE;
-           
+                 temp.maxsum=-123456789;   
+                 temp.sum=-123456789;  //any highly negative value but not use Integer.MIN_VALUE because it can
+                 temp.BPS=-123456789;  //create problem....like overflow can make it positive..
+                 temp.BSS=-123456789;  //like when we add -2 to -2147483648 it becomes 2147483646.
+                                       
+                                        //****Integer.MAX_VALUE + 1 == Integer.MIN_VALUE*****
            return temp;
        }
        
@@ -122,36 +123,39 @@ public class MaxSubarraySumInGivenRange {
     {
 		// Write your code here
         Scanner in=new Scanner(System.in);
-        int N=in.nextInt();
         
-        long arr[]=new long[N];
-        
-        for(int i=0;i<N;i++)
-            arr[i]=in.nextLong();
-        
-        Node tree[]=new Node[4*N];
-        
-        for(int i=0;i<(4*N);i++)
+
+        int t=in.nextInt();
+        for(int k=0;k<t;k++)
         {
-           tree[i]=new Node();    
-        }
-        
-        buildTree(arr,tree,0,N-1,1);
-        
-        // for(int i=0;i<(3*N);i++)
-        // {
-        //     System.out.print(tree[i].maxsum+" ");    
-        // }
-        
-        int q=in.nextInt();
-        
-        for(int i=0;i<q;i++)
-        {
-            int x=in.nextInt();
-            int y=in.nextInt();
+            int N=in.nextInt();
+            int q=in.nextInt();
+            int arr[]=new int[N];
+            for(int i=0;i<N;i++)
+                arr[i]=in.nextInt();
             
-            System.out.println(query(tree,0,N-1,1,x-1,y-1).maxsum);
-        }
+            Node tree[]=new Node[4*N];
+            
+            for(int i=0;i<(4*N);i++)
+            {
+               tree[i]=new Node();    
+            }
+            
+            buildTree(arr,tree,0,N-1,1);
+            
+            for(int i=0;i<q;i++)
+            {
+                int type=in.nextInt();
+                int x=in.nextInt();
+                int y=in.nextInt();
+                
+                   if(type==1)    //for type 1 x is left and y is right h
+                     System.out.println(query(tree,0,N-1,1,x,y).maxsum); 
+                   else{
+                     updateTree(arr,tree,0,N-1,1,x-1,y);   //type 2 for updation...at x by y..
+                   }
+            }     
+        }    
 	}
 
 }
