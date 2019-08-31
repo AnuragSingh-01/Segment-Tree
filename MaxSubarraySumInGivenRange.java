@@ -145,16 +145,17 @@ public class MaxSubarraySumInGivenRange {
             
             for(int i=0;i<q;i++)
             {
-                int type=in.nextInt();
-                int x=in.nextInt();
-                int y=in.nextInt();
+                int type=in.nextInt();    //type 1 fror query and type 2 for updation....
+                int x=in.nextInt();          
+                int y=in.nextInt();          
                 
-                   if(type==1)    //for type 1 x is left and y is right h
-                     System.out.println(query(tree,0,N-1,1,x,y).maxsum); 
-                   else{
+                   if(type==1)    //for type 1 x is left and y is right.
+                     System.out.println(query(tree,0,N-1,1,x-1,y-1).maxsum); //x-1 && y-1 isliye karna padh kyuki 0 based indexing nahi
+                   else                   				   //If there is 1 based indexing then we have to do -1 from x and y
+		   {                                                    
                      updateTree(arr,tree,0,N-1,1,x-1,y);   //type 2 for updation...at x by y..
-                   }
-            }     
+                   } 					   //since it is type 2 then x is the index the index that's why we have subtract 1
+	    }     					   //from x and y will be the value and thats why we don't need to sub 1 from it... 
         }    
 	}
 
