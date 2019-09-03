@@ -108,7 +108,7 @@ public class LazyPropgation
     
     public static void main(String args[])
     {
-        int arr[]=new int[]{1,-3,2,4};
+        int arr[]=new int[]{8,-1,3,7};
         int N=arr.length;
         int tree[]=new int[4*N];
         buildTree(arr,tree,0,N-1,1);
@@ -151,3 +151,20 @@ public class LazyPropgation
     
     
 }
+
+
+
+
+
+/*
+output---
+
+-1 -1 3 8 -1 3 7 0 0 0 0 0 0 0 0 
+2 2 6 8 -1 6 7 0 0 0 0 0 0 0 0 
+-3 2 6 8 -1 6 7 0 0 0 0 0 0 0 0 
+-3 -3 1 8 -3 6 7 0 0 0 0 0 0 0 0 
+-3
+-3
+-3 -3 1 8 -3 1 2 0 0 0 0 0 0 0 0
+
+*/
